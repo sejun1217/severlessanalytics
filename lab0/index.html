@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ko" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="description" content="Services Analytics Workshop">
+<meta name="author" content="Sejun Kim">
+
+    <link rel="icon" href="/ServicesAnalytics/images/favicon.png" type="image/png">
+
+    <title>실습0. 사전 준비 :: Services Analytics Workshop</title>
+
+    
+    <link href="/ServicesAnalytics/css/nucleus.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/fontawesome-all.min.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/hybrid.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/featherlight.min.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/perfect-scrollbar.min.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/auto-complete.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/atom-one-dark-reasonable.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/theme.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/hugo-theme.css?1598820468" rel="stylesheet">
+    
+      <link href="/ServicesAnalytics/css/theme-aws.css?1598820468" rel="stylesheet">
+    
+
+    <script src="/ServicesAnalytics/js/jquery-3.3.1.min.js?1598820468"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/ServicesAnalytics/lab0/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/ServicesAnalytics">
+	<img src="/ServicesAnalytics/images/logo.png" height="70px"/>
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/ServicesAnalytics/js/lunr.min.js?1598820468"></script>
+<script type="text/javascript" src="/ServicesAnalytics/js/auto-complete.js?1598820468"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/ServicesAnalytics\/";
+    
+</script>
+<script type="text/javascript" src="/ServicesAnalytics/js/search.js?1598820468"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/intro/" title="소개" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/intro/">
+          <b>1. </b>소개
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab0/" title="실습0. 사전 준비" class="dd-item 
+        parent
+        active
+        
+        ">
+      <a href="/ServicesAnalytics/lab0/">
+          <b>2. </b>실습0. 사전 준비
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab1/" title="실습1. Kinesis로 S3에 데이터 수집" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/lab1/">
+          <b>3. </b>실습1. Kinesis로 S3에 데이터 수집
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab2/" title="실습2. API Gateway, Lambda로 Aurora 데이터 가져오기" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/lab2/">
+          <b>4. </b>실습2. API Gateway, Lambda로 Aurora 데이터 가져오기
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab3/" title="실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/lab3/">
+          <b>5. </b>실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab4/" title="실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/lab4/">
+          <b>5. </b>실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3></h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="/ServicesAnalytics/credits/"><i class='fas fa-fw fa-bullhorn'></i> 크레딧</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> </a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      © 2019 Amazon Web Services, Inc. or its Affiliates. All rights reserved.
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/ServicesAnalytics/'>홈</a> > 실습0. 사전 준비
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              실습0. 사전 준비
+            </h1>
+          
+
+        
+
+
+
+
+	<p>본격적인 Lab 시작에 앞서 구성에 필요한 IAM User, EC2, S3를 생성 및 구성합니다.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h4 id="iam-user-생성">IAM User 생성</h4>
+<p>Lab 전체에서 사용할 IAM User를 생성합니다.<!-- raw HTML omitted --></p>
+<ol>
+<li>
+<p>AWS Management Console에 로그인 한 뒤 <strong>IAM</strong> 서비스에 접속합니다.</p>
+</li>
+<li>
+<p>왼쪽 메뉴에서 <strong>Users</strong>를 선택합니다.
+<img src="images/01.png" alt="image01"></p>
+</li>
+<li>
+<p><strong>Add user</strong> 버튼을 클릭하여 사용자 추가 페이지로 들어갑니다.</p>
+</li>
+<li>
+<p><strong>User name</strong>에 <strong>&lt;원하는 사용자 이름&gt;</strong> 을 입력하고, <strong>Access type</strong>에 <strong>Programmatic access</strong>와 <strong>AWS Management Console access</strong> 둘 모두를 선택합니다. <strong>Console password</strong>에 <strong>&lt;원하는 패스워드&gt;</strong>를 입력하고, 마지막 <strong>Require password reset</strong>의 체크는 <strong>해제</strong>합니다.
+<img src="images/02.png" alt="image02">
+<img src="images/03.png" alt="image03"></p>
+</li>
+<li>
+<p><strong>Next: Permissions</strong> 버튼을 클릭하고 <strong>Attach existing policies directly</strong>를 선택한 뒤 <strong>AdministratorAccess</strong> 권한을 추가해줍니다.
+<img src="images/04.png" alt="image04"></p>
+</li>
+<li>
+<p><strong>Next: Review</strong> 버튼을 클릭하고 정보를 확인한 뒤 <strong>Create user</strong> 버튼을 클릭하여 사용자 생성을 완료합니다.
+<img src="images/05.png" alt="image05"></p>
+</li>
+<li>
+<p><strong>Download.csv</strong> 버튼을 클릭하여 생성한 사용자의 정보를 다운 받습니다. EC2 설정에 꼭 필요한 파일이므로 기억하기 쉬운 위치에 저장합니다.
+<img src="images/06.png" alt="image06"></p>
+</li>
+<li>
+<p>AWS Management Console에 로그인 한 뒤 <strong>IAM</strong> 서비스에 접속합니다.</p>
+</li>
+<li>
+<p>왼쪽 메뉴에서 <strong>Roles</strong>를 선택합니다. 상단의 <strong>Create role</strong> 버튼 클릭하여 role 생성 page로 들어갑니다.
+<img src="images/9-1.png" alt="image9-1"></p>
+</li>
+<li>
+<p>AWS service 선택, EC2 service 를 선택 합니다. <strong>Next: Permissions</strong>를 선택합니다.
+<img src="images/10-1.png" alt="image10-1"></p>
+</li>
+<li>
+<p>Filter에 &ldquo;SSM&rdquo; 을 입력하고, <strong>AmazonEC2RoleforSSM</strong>를 선택합니다. Next:Tags 버튼을 클릭해서 tags 입력 부분으로 들어가서, Next:Review 버튼을 클릭합니다.
+<img src="images/11-1.png" alt="image11-1"></p>
+</li>
+<li>
+<p>Role name에는 <strong>EC2RoleforSSM</strong>을 입력하고, <strong>Create role</strong> 버튼을 클릭합니다. 
+<img src="images/12-1.png" alt="image12-1"></p>
+</li>
+</ol>
+<h4 id="ec2-생성">EC2 생성</h4>
+<p>Lab에서 데이터를 실시간으로 발생시킬 EC2 인스턴스를 생성합니다.<!-- raw HTML omitted --></p>
+<ol>
+<li>AWS Management Console에서 <strong>EC2</strong> 서비스에 접속합니다.</li>
+<li>우측 상단에서 Region은 **US West (Oregon)**를 선택합니다.</li>
+<li><strong>Launch Instance</strong>를 선택하여 새로운 인스턴스 생성을 시작합니다.
+<img src="images/07.png" alt="image07"></li>
+<li><strong>Step 1: Choose an Amazon Machine Image (AMI)</strong> 화면에서 <strong>Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type - ami-14c5486b</strong> 를 선택합니다.
+<img src="images/08.png" alt="image08"></li>
+<li><strong>Step 2 : Choose an Instance Type</strong> 화면에서 인스턴스 타입은 <strong>t2.micro</strong>를 선택합니다. <strong>Next: Configure Instance Details</strong> 을 클릭합니다.
+<img src="images/09.png" alt="image09"></li>
+<li><strong>Step 3: Configure Instance Details</strong> 화면에서 <strong>IAM role</strong>에서 미리 생성한 <strong>EC2RoleforSSM</strong>을 선택 합니다.
+<img src="images/7-2.png" alt="image7-2"></li>
+<li><strong>Step 3: Configure Instance Details</strong> 화면에서 <strong>Advanced Details</strong>을 클릭하고 아래 <strong>userdata</strong>를 복사하여 붙여 넣습니다.</li>
+</ol>
+<pre><code class="language-markup" data-lang="markup">#include
+https://s3.amazonaws.com/immersionday-bigdata-v20180731/userdata.sh
+</code></pre><p><img src="images/10.png" alt="image10">
+8. <strong>Step 4: Add Storage</strong> 화면에서 기본값을 그대로 두고 <strong>Next: Add Tags</strong>를 클릭합니다.
+9. <strong>Step 5: Add Tags</strong> 화면에서 <strong>Add Tag</strong> 버튼을 한 번 클릭한 뒤, <strong>Key/Value</strong> : <strong>Name/AnalyticsStream</strong> 를 입력하고 <strong>Next: Configure Security Group</strong> 을 클릭합니다.
+<img src="images/11.png" alt="image11">
+10. <strong>Step 6: Configure Security Group</strong> 화면에서 <strong>Security Group에 필요한 정보를 입력</strong>한 후 <strong>Review and Launch</strong>를 클릭합니다.
+* Security Group Name : bastion
+* Description : SG for bastion
+* Type : SSH
+* Protocol : TCP
+* Port Range : 22
+* Source : 0.0.0.0/0
+<img src="images/12.png" alt="image12">
+11. <strong>Step 7: Review Instance Launch</strong> 화면에서 <strong>Launch</strong>를 클릭합니다.
+12. EC2 Instance에 접속하기 위한 Key pair를 생성합니다. <strong>Create a new key pair</strong>를 선택하고 <strong>Key pair name</strong>은 <strong>analytics-hol</strong> 을 입력한 후 <strong>Download Key Pair</strong>를 클릭합니다.
+<img src="images/13.png" alt="image13">
+13. <strong>Key Pair</strong>를 <strong>PC의 임의 위치에 저장</strong>한 후 <strong>Launch Instances</strong>를 클릭합니다. (인스턴스 기동에 몇 분이 소요될 수 있습니다.)
+<img src="images/14.png" alt="image14">
+14. (MacOS 사용자) 다운로드 받은 <strong>Key Pair 파일의 File Permission</strong>을 <strong>400</strong>으로 변경합니다.</p>
+<pre><code class="language-markup" data-lang="markup">$ chmod 400 ./analytics-hol.pem
+$ ls -lat analytics-hol.pem
+-r-------- 1 ****** ****** 1692 Jun 25 11:49 analytics-hol.pem
+</code></pre><h4 id="ec2-설정---system-manager-seesion-manager를-통해-ec2-ssh-접속">EC2 설정 - System manager (seesion manager를 통해 ec2 ssh 접속)</h4>
+<p>생성한 EC2 인스턴스가 다른 AWS 리소스에 접근 및 제어할 수 있도록 다음과 같이 구성합니다.<!-- raw HTML omitted --></p>
+<ol>
+<li>AWS Management Console에서 <strong>Systems Manager</strong> 서비스에 접속합니다.</li>
+<li>왼쪽 하단의 <strong>Session Manager</strong> 를 선택 합니다. 
+<img src="images/2-3.png" alt="image2-3"></li>
+<li>Session manager console에서 <strong>Start session</strong> 버튼을 클릭합니다.
+<img src="images/2-4.png" alt="image2-4"></li>
+<li>앞에서 생성한 AnalyticsStream instance를 선택하고, 하단의 <strong>Start session</strong> 버튼을 클릭합니다.
+<img src="images/4-3.png" alt="image4-3"></li>
+<li>instance session에 들어가서 /home/ec2-user/ 에 있는 3개의 files을 /home/ssm-user/ 로 copy 합니다.</li>
+</ol>
+<pre><code class="language-markup" data-lang="markup">sudo cp /home/ec2-user/redshift.py /home/ssm-user/
+
+sudo cp /home/ec2-user/firehose.py /home/ssm-user/
+
+sudo cp /home/ec2-user/banking_loss.csv /home/ssm-user/
+</code></pre><p><img src="images/5-3.png" alt="image5-3"></p>
+<ol start="6">
+<li>User Data를 통해 3가지 파일(banking_loss.csv, firehose.py, redshift.py)이 잘 다운로드 받아졌는지 확인합니다.</li>
+</ol>
+<pre><code class="language-markup" data-lang="markup">ls /home/ssm-user/
+</code></pre><p><img src="images/6-3.png" alt="image6-3"></p>
+<ol start="7">
+<li>AWS의 다른 리소스 접근을 위해 AWS Configure를 진행합니다. 이때 앞서 생성한 IAM User 데이터를 활용합니다. 이전에 다운로드 받은 .csv 파일을 열어 Access key ID와 Secret access key를 확인하고 입력합니다. region은 us-west-2 로 입력 합니다.</li>
+</ol>
+<pre><code class="language-markup" data-lang="markup">aws configure
+AWS Access Key ID [None]: &lt;Access key ID&gt;
+AWS Secret Access Key [None]: &lt;Secret access key&gt;
+Default region name [None]: us-west-2
+Default output format [None]:
+</code></pre><p><img src="images/7-3.png" alt="image7-3"></p>
+<ol start="8">
+<li>설정이 완료 되었다면, aws configure list 로 다음과 같이 입력하신 정보가 마스킹 되어 보이게 됩니다.</li>
+</ol>
+<pre><code class="language-markup" data-lang="markup">aws configure list
+</code></pre><p><img src="images/8-3.png" alt="image8-3"></p>
+<h4 id="s3-bucket-생성">S3 Bucket 생성</h4>
+<p>발생한 실시간 데이터를 저장할 S3 Bucket을 생성합니다.<!-- raw HTML omitted --></p>
+<ol>
+<li>AWS Management Console에서 <strong>S3</strong> 서비스에 접속합니다.</li>
+<li><strong>Create bucket</strong> 버튼을 클릭하고 다음과 같은 정보를 입력한 뒤 <strong>Create</strong> 버튼을 클릭하여 bucket을 생성합니다.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th> </th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bucket name</td>
+<td>analytics-workshop-<strong>[개인식별자]</strong> <!-- raw HTML omitted --> (예 : analytics-workshop-<strong>foobar</strong>)</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>미국 서부 (오레곤)</td>
+</tr>
+<tr>
+<td>그 외</td>
+<td>default</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<!-- raw HTML omitted -->
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/ServicesAnalytics/intro/" title="소개"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/ServicesAnalytics/lab1/" title="실습1. Kinesis로 S3에 데이터 수집" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/ServicesAnalytics/js/clipboard.min.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/perfect-scrollbar.min.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/perfect-scrollbar.jquery.min.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/jquery.sticky.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/featherlight.min.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/highlight.pack.js?1598820468"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/ServicesAnalytics/js/modernizr.custom-3.6.0.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/learn.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/hugo-learn.js?1598820468"></script>
+
+    <link href="/ServicesAnalytics/mermaid/mermaid.css?1598820468" rel="stylesheet" />
+    <script src="/ServicesAnalytics/mermaid/mermaid.js?1598820468"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/ServicesAnalytics/intro/</loc>
+  </url>
+  
+  <url>
+    <loc>/ServicesAnalytics/</loc>
+    <lastmod>2016-04-09T16:50:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/ServicesAnalytics/lab0/</loc>
+  </url>
+  
+  <url>
+    <loc>/ServicesAnalytics/lab1/</loc>
+  </url>
+  
+  <url>
+    <loc>/ServicesAnalytics/lab2/</loc>
+  </url>
+  
+  <url>
+    <loc>/ServicesAnalytics/lab3/</loc>
+  </url>
+  
+  <url>
+    <loc>/ServicesAnalytics/lab4/</loc>
+  </url>
+  
+  <url>
+    <loc>/ServicesAnalytics/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>/ServicesAnalytics/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>/ServicesAnalytics/credits/</loc>
+  </url>
+  
+</urlset>

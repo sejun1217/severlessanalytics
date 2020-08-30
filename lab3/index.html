@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ko" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="description" content="Services Analytics Workshop">
+<meta name="author" content="Sejun Kim">
+
+    <link rel="icon" href="/ServicesAnalytics/images/favicon.png" type="image/png">
+
+    <title>실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석 :: Services Analytics Workshop</title>
+
+    
+    <link href="/ServicesAnalytics/css/nucleus.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/fontawesome-all.min.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/hybrid.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/featherlight.min.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/perfect-scrollbar.min.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/auto-complete.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/atom-one-dark-reasonable.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/theme.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/hugo-theme.css?1598820468" rel="stylesheet">
+    
+      <link href="/ServicesAnalytics/css/theme-aws.css?1598820468" rel="stylesheet">
+    
+
+    <script src="/ServicesAnalytics/js/jquery-3.3.1.min.js?1598820468"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/ServicesAnalytics/lab3/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/ServicesAnalytics">
+	<img src="/ServicesAnalytics/images/logo.png" height="70px"/>
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/ServicesAnalytics/js/lunr.min.js?1598820468"></script>
+<script type="text/javascript" src="/ServicesAnalytics/js/auto-complete.js?1598820468"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/ServicesAnalytics\/";
+    
+</script>
+<script type="text/javascript" src="/ServicesAnalytics/js/search.js?1598820468"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/intro/" title="소개" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/intro/">
+          <b>1. </b>소개
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab0/" title="실습0. 사전 준비" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/lab0/">
+          <b>2. </b>실습0. 사전 준비
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab1/" title="실습1. Kinesis로 S3에 데이터 수집" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/lab1/">
+          <b>3. </b>실습1. Kinesis로 S3에 데이터 수집
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab2/" title="실습2. API Gateway, Lambda로 Aurora 데이터 가져오기" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/lab2/">
+          <b>4. </b>실습2. API Gateway, Lambda로 Aurora 데이터 가져오기
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab3/" title="실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석" class="dd-item 
+        parent
+        active
+        
+        ">
+      <a href="/ServicesAnalytics/lab3/">
+          <b>5. </b>실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab4/" title="실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/lab4/">
+          <b>5. </b>실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3></h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="/ServicesAnalytics/credits/"><i class='fas fa-fw fa-bullhorn'></i> 크레딧</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> </a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      © 2019 Amazon Web Services, Inc. or its Affiliates. All rights reserved.
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/ServicesAnalytics/'>홈</a> > 실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석
+            </h1>
+          
+
+        
+
+
+
+
+	<p>Amazon EMR은 관리형 Hadoop 프레임워크로서 빠르게 빅데이터 분석을 위한 Hadoop 클러스터 구성을 할 수 있습니다.<!-- raw HTML omitted --></p>
+<h4 id="emr-클러스터-생성">EMR 클러스터 생성</h4>
+<p>EMR 클러스터를 구성합니다. 본 실습에서는 Spark와 Zeppelin을 활용합니다.<!-- raw HTML omitted --></p>
+<ol>
+<li>AWS 관리 콘솔에 로그인 한 뒤, <strong>Oregon</strong> 리전의 <strong>EMR</strong> 서비스에 접속합니다.<!-- raw HTML omitted --></li>
+<li>
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  클러스터 생성
+  
+</a>
+ 버튼을 선택하여 클러스터 구성을 시작합니다.<!-- raw HTML omitted --></li>
+<li><strong>고급 옵션으로 이동</strong> 버튼을 선택하여 원하는 애플리케이션을 직접 선택하여 구성합니다.<!-- raw HTML omitted -->
+<img src="images/01.png" alt="image01"></li>
+<li><strong>Release</strong>는 <strong>emr-5.27.0</strong>, 소프트웨어는 <strong>Spark 2.4.4</strong>과 <strong>Zeppelin 0.8.1</strong>를 선택하고 <strong>&ldquo;Hive 테이블 메타 데이터에서 사용&rdquo;</strong> 및 **&ldquo;Spark 테이블 메타 데이터에서 사용&rdquo;**을 선택합니다.
+<img src="images/02.png" alt="image02"></li>
+<li>하드웨어 구성 단계에서는 네트워크 선택에서 vpc-xxxxx 를 선택하고 EC2 서브넷에서는 가장 상단의 항목을 선택합니다. 나머지 항목은 그대로 두고 
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  다음
+  
+</a>
+ 을 클릭합니다.
+<img src="images/03.png" alt="image03"></li>
+<li><strong>클러스터 이름</strong>에 원하는 클러스터 이름을 입력하고, <strong>종료 보호</strong> 옵션은 체크 해제 합니다. 
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  다음
+  
+</a>
+을 클릭합니다.
+<img src="images/04.png" alt="image04"></li>
+<li><strong>보안 옵션</strong>에서 앞에서 생성한 <strong>EC2 키 페어</strong>를 선택합니다.
+<img src="images/05.png" alt="image05"></li>
+<li>다음과 같이 두 단계로 보안을 설정합니다.
+<img src="images/06.png" alt="image06">
+1 단계) EC2 보안 그룹섹션에서 마스터와 코어 및 작업의 EMR 관리형 보안 그룹에는 모두 각각 default 그룹을 설정하고
+<img src="images/07.png" alt="image07">
+2 단계) <strong>마스터 노드의 추가 보안 그룹에는 사전 준비에서 생성했던 보안 그룹 (포트 22 허용)을 추가로 할당합니다.</strong>
+<img src="images/08.png" alt="image08"></li>
+<li>화면 하단의 <strong>클러스터 생성</strong>을 선택하여 클러스터를 생성합니다.<!-- raw HTML omitted -->
+EMR 클러스터 생성에 약 <strong>10분~15분</strong> 정도 소요됩니다.
+<img src="images/09.png" alt="image09"></li>
+<li>클러스터의 <strong>상태</strong>가 **대기 (클러스터 준비)**이 되면 다음 실습을 진행합니다.
+<img src="images/10.png" alt="image10"></li>
+</ol>
+<h4 id="emr-웹-접속-설정-윈도-운영체제">EMR 웹 접속 설정 (윈도 운영체제)</h4>
+<ol>
+<li>생성한 클러스터를 선택하여 마스터 퍼블릭 DNS 정보를 확인합니다.
+<img src="images/11.png" alt="image11"></li>
+<li><strong>SSH</strong>의 <strong>Tunnels</strong>에서 <strong>Source port</strong>에 8157을 <strong>Destination</strong>에는 localhost:8890 을 입력한 뒤 <strong>Add</strong>를 클릭합니다.
+<img src="images/12.png" alt="image12"></li>
+<li><strong>Auth</strong>에는 EMR 클러스터 생성시에 사용한 키 페어의 .ppk 키를 추가합니다.</li>
+<li>마지막으로 <strong>Session</strong>의 <strong>Host Name</strong>에는 다음을 입력한 뒤 <strong>Open</strong>을 클릭하여 접속합니다.</li>
+</ol>
+<pre><code>hadoop@&lt;마스터 퍼블릭 DNS&gt;
+</code></pre><p><img src="images/13.png" alt="image13">
+<img src="images/14.png" alt="image14"></p>
+<ol start="5">
+<li>브라우저에서 http://localhost:8157 주소로 접속합니다.
+<img src="images/15.png" alt="image15"></li>
+</ol>
+<h4 id="emr-웹-접속-설정-mac-또는-linux-운영체제">EMR 웹 접속 설정 (Mac 또는 Linux 운영체제)</h4>
+<ol>
+<li>간단히 마스터 노드와의 SSH 터널을 만들어 접근할 수 있습니다.</li>
+<li>마스터 퍼블릭 DNS를 확인합니다.
+<img src="images/16.png" alt="image16"></li>
+<li>터미널에서 다음 명령어를 입력합니다. 응답을 반환 하지는 않습니다.</li>
+</ol>
+<pre><code>ssh -i &quot;&lt;키 페어 이름&gt;&quot; -N -L 8157:localhost:8890 hadoop@&lt;마스터 퍼블릭 DNS&gt;
+</code></pre><p><img src="images/17.png" alt="image17"></p>
+<ol start="4">
+<li>브라우저에서 http://localhost:8157 주소로 접속합니다.
+<img src="images/18.png" alt="image18"></li>
+</ol>
+<h4 id="zeppelin을-활용한-빅데이터-분석">Zeppelin을 활용한 빅데이터 분석</h4>
+<ol>
+<li>Zeppelin Tutorial - Basic Features (Spark)를 클릭합니다.
+<img src="images/19.png" alt="image19"></li>
+<li>여러분은 S3 (EMRFS)에 저장된 데이터(각 필드가 ‘;’로 구분)로 부터 6개의 컬럼을 읽어 필요한 자료형을 적용하고 이를 임시 테이블로 저장하는 코드를 볼 수 있습니다.
+<img src="images/20.png" alt="image20"></li>
+<li>원본 코드에서 추가로 몇몇 컬럼을 더 가져오기(6번째 12번째 컬럼을 추가로 활용) 위하여 <a href="https://github.com/setch3000/emr-s3/blob/master/sample.scala">https://github.com/setch3000/emr-s3/blob/master/sample.scala</a> 에서 샘플 코드를 복사하여 Zepplelin 노트북의 셀에 붙여 넣기를 한 후 ▷버튼을 눌려 다시 한번 실행 해 봅니다.
+<img src="images/21.png" alt="image21"></li>
+</ol>
+<pre><code>%spark
+import org.apache.commons.io.IOUtils
+import java.net.URL
+import java.nio.charset.Charset
+
+//Load Bank Data
+val bankText = sc.parallelize(
+    IOUtils.toString(
+        new URL(&quot;https://s3.amazonaws.com/apache-zeppelin/tutorial/bank/bank.csv&quot;),
+        Charset.forName(&quot;utf8&quot;)).split(&quot;\n&quot;))
+ 
+case class Order(age: Integer, job: String, marital: String, education: String, amount: Integer, housing: String, campaign: String)
+ 
+val bank = bankText.map(s =&gt; s.split(&quot;;&quot;)).filter(s =&gt; s(0) != &quot;\&quot;age\&quot;&quot;).map(
+    s =&gt; Order(s(0).toInt,
+            s(1).replaceAll(&quot;\&quot;&quot;, &quot;&quot;),
+            s(2).replaceAll(&quot;\&quot;&quot;, &quot;&quot;),
+            s(3).replaceAll(&quot;\&quot;&quot;, &quot;&quot;),
+            s(5).replaceAll(&quot;\&quot;&quot;, &quot;&quot;).toInt,
+            s(6).replaceAll(&quot;\&quot;&quot;, &quot;&quot;),
+            s(12).replaceAll(&quot;\&quot;&quot;, &quot;&quot;)
+        )
+).toDF()
+bank.registerTempTable(&quot;bank&quot;)
+bank.show()
+</code></pre><ol start="4">
+<li>로딩 된 데이터를 바탕으로 다양한 분석을 진행 해 봅니다.<!-- raw HTML omitted -->
+4.1 결혼 여부 / 주택 소유 여부에 따른 평균 이용 금액</li>
+</ol>
+<pre><code>%sql
+select marital,housing,
+avg(amount)
+from bank
+group by marital, housing
+</code></pre><p><img src="images/22.png" alt="image22">
+4.2 직업별 평균 이용 금액</p>
+<pre><code>%sql
+select job, avg(amount)
+from bank
+group by job
+order by 2
+</code></pre><p><img src="images/23.png" alt="image23">
+4.3 20대 나이별 평균 이용 금액</p>
+<pre><code>%sql
+select age, avg(amount)
+from bank
+where age &gt; ${minAge=19} and
+age &lt; ${maxAge=30}
+group by age
+</code></pre><p><img src="images/24.png" alt="image24">
+4.4 연령/교육 수준별 이용 금액</p>
+<pre><code>%sql
+select age, amount, education,
+housing
+from bank
+</code></pre><p><img src="images/25.png" alt="image25">
+4.5 직업 별 평균 마케팅 노출 횟수</p>
+<pre><code>%sql
+select job, avg(campaign) as
+campaign
+from bank
+group by job
+</code></pre><p><img src="images/26.png" alt="image26">
+4.6 결혼 직업 별 이용 금액 합계</p>
+<pre><code>%sql
+select marital, job, sum(amount)
+from bank
+group by marital, job
+</code></pre><p><img src="images/27.png" alt="image27">
+5. 분석 결과를 그래프로 표현 하면 아래와 같이 원하는 정보를 같은 방식으로 분석할 수 있습니다.
+<img src="images/28.png" alt="image28"></p>
+<h4 id="glue-데이터-카탈로그를-활용하여-s3에-저장된-데이터-분석">Glue 데이터 카탈로그를 활용하여 S3에 저장된 데이터 분석</h4>
+<p>EMR 클러스터에서 Glue의 카탈로그를 조회하여 손쉽게 S3에 저장된 데이터를 분석 할 수 있습니다.<!-- raw HTML omitted --></p>
+<ol>
+<li>화면 좌측 상단의 Zeppelin 이미지를 클릭하여 Zeppelin의 첫페이지로 이동합니다.<!-- raw HTML omitted --></li>
+<li>Create new note 버튼을 클릭 합니다.
+<img src="images/29.png" alt="image29"></li>
+<li>’TEST’라는 이름으로 새 노트를 생성 합니다.
+<img src="images/30.png" alt="image30"></li>
+<li>Glue의 카탈로그를 조회하여 데이터베이스 리스트를 확인 합니다.</li>
+</ol>
+<pre><code>%spark
+spark.sql(&quot;show databases&quot;).show()
+</code></pre><p><img src="images/31.png" alt="image31">
+5. 확인된 데이터베이스 리스트 중 &ldquo;workshop&quot;의 테이블들을 확인해 봅니다.</p>
+<pre><code>%spark
+spark.catalog.setCurrentDatabase(&quot;workshop&quot;)
+spark.sql(&quot;show tables&quot;).show()
+</code></pre><p><img src="images/32.png" alt="image32">
+6. 다음과 같이 쿼리를 수행하여 데이터 분석을 진행 합니다.</p>
+<pre><code>%sql
+select region, status, count(*)
+from parquet
+group by region, status
+order by region
+</code></pre><p><img src="images/33.png" alt="image33"></p>
+<h4 id="선택-작업--emr-클러스터에-노드-추가">선택 작업 : EMR 클러스터에 노드 추가</h4>
+<p>EMR 클러스터에서 Hadoop의 슬레이브 노드에 해당하는 작업을 실행하는 Core 노드와 Task 노드를 쉽게 추가할 수 있습니다.<!-- raw HTML omitted --></p>
+<ol>
+<li>AWS 관리 콘솔에 로그인 한 뒤, <strong>EMR</strong> 서비스에 접속합니다.<!-- raw HTML omitted --></li>
+<li>생성한 클러스터를 선택한 후, 하드웨어 탭을 선택합니다.
+<img src="images/34.png" alt="image34"></li>
+<li><strong>CORE</strong>의 <strong>인스턴스 수</strong>의 <strong>크기 조정</strong> 을 클릭하여 3 으로 변경합니다.
+<img src="images/35.png" alt="image35"></li>
+<li><strong>작업 인스턴스 그룹 추가</strong>를 클릭하여 <strong>작업</strong> 노드를 1개 추가합니다.
+<img src="images/36.png" alt="image36"></li>
+<li>Core와 Task 노드의 크기 변경이 시작됩니다. 각 노드에 Auto Scaling을 적용할 수도 있습니다.
+<img src="images/37.png" alt="image37"></li>
+</ol>
+<hr>
+<!-- raw HTML omitted -->
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/ServicesAnalytics/lab2/" title="실습2. API Gateway, Lambda로 Aurora 데이터 가져오기"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/ServicesAnalytics/lab4/" title="실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/ServicesAnalytics/js/clipboard.min.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/perfect-scrollbar.min.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/perfect-scrollbar.jquery.min.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/jquery.sticky.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/featherlight.min.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/highlight.pack.js?1598820468"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/ServicesAnalytics/js/modernizr.custom-3.6.0.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/learn.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/hugo-learn.js?1598820468"></script>
+
+    <link href="/ServicesAnalytics/mermaid/mermaid.css?1598820468" rel="stylesheet" />
+    <script src="/ServicesAnalytics/mermaid/mermaid.js?1598820468"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+  </body>
+</html>

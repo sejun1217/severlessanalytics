@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ko" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="description" content="Services Analytics Workshop">
+<meta name="author" content="Sejun Kim">
+
+    <link rel="icon" href="/ServicesAnalytics/images/favicon.png" type="image/png">
+
+    <title>실습2. API Gateway, Lambda로 Aurora 데이터 가져오기 :: Services Analytics Workshop</title>
+
+    
+    <link href="/ServicesAnalytics/css/nucleus.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/fontawesome-all.min.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/hybrid.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/featherlight.min.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/perfect-scrollbar.min.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/auto-complete.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/atom-one-dark-reasonable.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/theme.css?1598820468" rel="stylesheet">
+    <link href="/ServicesAnalytics/css/hugo-theme.css?1598820468" rel="stylesheet">
+    
+      <link href="/ServicesAnalytics/css/theme-aws.css?1598820468" rel="stylesheet">
+    
+
+    <script src="/ServicesAnalytics/js/jquery-3.3.1.min.js?1598820468"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/ServicesAnalytics/lab2/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/ServicesAnalytics">
+	<img src="/ServicesAnalytics/images/logo.png" height="70px"/>
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/ServicesAnalytics/js/lunr.min.js?1598820468"></script>
+<script type="text/javascript" src="/ServicesAnalytics/js/auto-complete.js?1598820468"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/ServicesAnalytics\/";
+    
+</script>
+<script type="text/javascript" src="/ServicesAnalytics/js/search.js?1598820468"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/intro/" title="소개" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/intro/">
+          <b>1. </b>소개
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab0/" title="실습0. 사전 준비" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/lab0/">
+          <b>2. </b>실습0. 사전 준비
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab1/" title="실습1. Kinesis로 S3에 데이터 수집" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/lab1/">
+          <b>3. </b>실습1. Kinesis로 S3에 데이터 수집
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab2/" title="실습2. API Gateway, Lambda로 Aurora 데이터 가져오기" class="dd-item 
+        parent
+        active
+        
+        ">
+      <a href="/ServicesAnalytics/lab2/">
+          <b>4. </b>실습2. API Gateway, Lambda로 Aurora 데이터 가져오기
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab3/" title="실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/lab3/">
+          <b>5. </b>실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/ServicesAnalytics/lab4/" title="실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/ServicesAnalytics/lab4/">
+          <b>5. </b>실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3></h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="/ServicesAnalytics/credits/"><i class='fas fa-fw fa-bullhorn'></i> 크레딧</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> </a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      © 2019 Amazon Web Services, Inc. or its Affiliates. All rights reserved.
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/ServicesAnalytics/'>홈</a> > 실습2. API Gateway, Lambda로 Aurora 데이터 가져오기
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              실습2. API Gateway, Lambda로 Aurora 데이터 가져오기
+            </h1>
+          
+
+        
+
+
+
+
+	<h4 id="실습-소개">실습 소개</h4>
+
+<div class="notices note" ><p>이번 실습 에서는 Aurora에 저장하고 API Gateway, Lambda를 이용해서 Aurora에 저장된 데이터를 가져오는 실습을 진행할 예정입니다.</p>
+</div>
+
+<hr>
+<h4 id="실습-아키텍처">실습 아키텍처</h4>
+<p><img src="images/01.png" alt="image01"></p>
+<hr>
+<h4 id="cloudformation으로-aurora-serverless-구성">CloudFormation으로 Aurora Serverless 구성</h4>
+<p>CloudFormation은 사용하면 텍스트 파일 또는 프로그래밍 언어로 전체 인프라와 애플리케이션 리소스를 모델링할 수 있습니다. 이를 통하여 VPC 및 Aurora Serverless몇 번의 클릭 만으로 구성 할 수 있습니다.</p>
+<ol>
+<li>AWS Management Console에 로그인 합니다. (Region : us-east-1)</li>
+<li><a href="https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://cloudformation-template-sejun.s3.ap-northeast-2.amazonaws.com/DataBankWorkshop.yaml&amp;stackName=DataBank">AWS Cloudformation for Aurora Serverless</a> 접속합니다.</li>
+<li>기본 설정을 확인 합니다. VPC 및 Subnet CIDR이 기존에 생성되어 있는 것과 겹치지 않으면, 변경 하지 않고, 화면 제일 하단에 있는 체크 박스 두개를 모두 선택한 후 
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  스택 생성
+  
+</a>
+ 버튼을 클릭합니다.
+<img src="images/02.png" alt="image02"></li>
+<li>
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  스택 생성
+  
+</a>
+ 버튼을 누르면 아래와 같은 화면으로 리다이렉트 됩니다. 모든 Stack이 <strong>CREATE_COMPLETE</strong> 될때 까지 기다립니다.(약 10분 ~ 20분 소요)
+<img src="images/03.png" alt="image03">
+<img src="images/04.png" alt="image04"></li>
+</ol>
+<hr>
+<h4 id="query-editor를-이용하여-간단한-쿼리-수행">Query Editor를 이용하여 간단한 쿼리 수행</h4>
+<p>CloudFormation으로 Aurora Serverless를 프로비져닝 하였습니다. Query Editor를 이용하여 Sample Query를 수행합니다. 그리고 집계 테이블을 가져오기 위한 Glue ETL 작업을 수행하기 전에 Aurora에 테이블을 생성 합니다.</p>
+<ol>
+<li><a href="https://console.aws.amazon.com/rds/home?region=us-east-1">RDS Console</a>에 접속합니다.</li>
+<li>좌측 메뉴에서 <strong>Query Editor</strong>를 선택합니다.
+<img src="images/05.png" alt="image05"></li>
+<li>생성된 Aurora Cluster <strong>my-aurora-cluster</strong> 를 선택하고, 데이터베이스 사용자 이름은 <strong>새 데이터베이스 자격 증명 추가</strong>를 선택 합니다.
+<img src="images/06.png" alt="image06"></li>
+<li>옵션을 아래와 같이 입력 합니다.
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  데이터베이스에 연결
+  
+</a>
+ 버튼을 누릅니다.
+<ul>
+<li>데이터베이스 사용자 이름 입력: <strong>MyAdmin</strong></li>
+<li>데이터베이스 암호 입력: <strong>Init12345</strong></li>
+<li>데이터베이스 이름 입력: <strong>mydb</strong>
+<img src="images/07.png" alt="image07"></li>
+</ul>
+</li>
+<li><strong>연결 중&hellip;</strong> 에서 편집기로 리다이렉트 됩니다.</li>
+<li>생성 된 Sample Query를 수행 하기 위해,
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  실행
+  
+</a>
+ 버튼을 누릅니다. Aurora Serverless 이기 때문에 약간 delay가 발생할 수 있습니다.</li>
+</ol>
+<pre><code class="language-Query" data-lang="Query">select * from information_schema.tables;
+</code></pre><p><img src="images/08.png" alt="image08">
+<img src="images/09.png" alt="image09">
+7. 테스트 하기 위한 간단한 테이블을 생성합니다. 아래 쿼리를 수행 후 
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  실행
+  
+</a>
+ 버튼을 누릅니다.
+실행 후 Status가 <strong>성공</strong> 인지 확인 합니다.</p>
+<pre><code class="language-Query" data-lang="Query">CREATE TABLE user_table(name VARCHAR(255), role VARCHAR(255));
+</code></pre><p><img src="images/10.png" alt="image10"></p>
+<hr>
+<h4 id="aws-lambda-생성">AWS Lambda 생성</h4>
+<p>Aurora에 저장된 데이터를 가지고 올 수 있는 AWS Lambda 함수를 생성합니다.</p>
+<ol>
+<li>Lambda를 생성하기 전에 Aurora Serverless를 접속하기 위한 접속 정보를 확인 합니다.
+<ul>
+<li><strong>cluster arn</strong> 확인 하는 방법
+<ul>
+<li><a href="https://console.aws.amazon.com/rds/home?region=us-east-1#databases:">Aurora 데이터베이스 Console</a>에 접속합니다.</li>
+<li>생성된 <strong>my-aurora-cluster</strong> 클릭 합니다.
+<img src="images/11.png" alt="image11"></li>
+<li>구성 탭을 선택하고 cluster arn 정보를 확인 합니다.(e.g arn:aws:rds:us-east-1:773728249266:cluster:my-aurora-cluster)
+<img src="images/12.png" alt="image12"></li>
+</ul>
+</li>
+<li><strong>secret arn</strong> 확인 하는 방법
+<ul>
+<li><a href="https://console.aws.amazon.com/secretsmanager/home?region=us-east-1#/listSecrets">Secrets Manager Console</a>에 접속합니다.</li>
+<li>Aurora 접속시 생성된 <strong>보안 암호 이름</strong> 을 선택합니다
+<img src="images/13.png" alt="image13"></li>
+<li>보안 암호 ARN을 확인 합니다 (e.g arn:aws:secretsmanager:us-east-1:773728249266:secret:rds-db-credentials/cluster-NE5IADIOTWINCMB4JMZMV3KVDQ/MyAdmin-S7nkrf)
+<img src="images/14.png" alt="image14"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions">Lambda Console</a>에 접속합니다.</li>
+<li>
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  함수 생성
+  
+</a>
+ 버튼을 누릅니다.
+<img src="images/15.png" alt="image15"></li>
+<li><strong>새로 작성</strong> 상태에서, 함수 이름은 <strong>MyAurora</strong>, 런타임은 <strong>Python 3.7</strong> 을 선택하고, 
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  함수 생성
+  
+</a>
+ 버튼을 누릅니다.
+<img src="images/16.png" alt="image16"></li>
+<li>함수 코드를 아래 코드로 변경 합니다. cluster_arn 과 secret_arn은 확인한 정보로 변경 합니다. 변경 후 
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  저장
+  
+</a>
+ 버튼을 누릅니다.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> boto3
+<span style="color:#f92672">import</span> json
+
+<span style="color:#75715e"># Update your cluster and secret ARNs</span>
+cluster_arn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&lt;arn:aws:rds:us-east-1:~&gt;&#39;</span>
+secret_arn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&lt;arn:aws:secretsmanager:~&gt;&#39;</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">lambda_handler</span>(event, context):
+    operation <span style="color:#f92672">=</span> event[<span style="color:#e6db74">&#39;operation&#39;</span>]
+
+    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;get&#39;</span> <span style="color:#f92672">==</span> operation:
+        queryResult <span style="color:#f92672">=</span> get_rds_data_api()
+    <span style="color:#66d9ef">elif</span> <span style="color:#e6db74">&#39;para&#39;</span> <span style="color:#f92672">==</span> operation:
+        queryResult <span style="color:#f92672">=</span> get_para_rds_data_api(event[<span style="color:#e6db74">&#39;payload&#39;</span>][<span style="color:#e6db74">&#39;role&#39;</span>])
+    <span style="color:#66d9ef">return</span> queryResult
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_rds_data_api</span>():
+    rds_data <span style="color:#f92672">=</span> boto3<span style="color:#f92672">.</span>client(<span style="color:#e6db74">&#39;rds-data&#39;</span>)
+
+    sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">          SELECT * FROM user_table
+</span><span style="color:#e6db74">          &#34;&#34;&#34;</span>
+
+    response <span style="color:#f92672">=</span> rds_data<span style="color:#f92672">.</span>execute_statement(
+        resourceArn <span style="color:#f92672">=</span> cluster_arn,
+        secretArn <span style="color:#f92672">=</span> secret_arn,
+        database <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;mydb&#39;</span>,
+        sql <span style="color:#f92672">=</span> sql)
+
+    <span style="color:#66d9ef">return</span> response
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_para_rds_data_api</span>(payload):
+    rds_data <span style="color:#f92672">=</span> boto3<span style="color:#f92672">.</span>client(<span style="color:#e6db74">&#39;rds-data&#39;</span>)
+
+    sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">          SELECT * FROM user_table where role = :para1
+</span><span style="color:#e6db74">          &#34;&#34;&#34;</span>
+    message_value <span style="color:#f92672">=</span> payload
+    para1 <span style="color:#f92672">=</span> [{<span style="color:#e6db74">&#39;name&#39;</span>:<span style="color:#e6db74">&#39;para1&#39;</span>, <span style="color:#e6db74">&#39;value&#39;</span>:{<span style="color:#e6db74">&#39;stringValue&#39;</span>: f<span style="color:#e6db74">&#39;{message_value}&#39;</span>}}]
+    response <span style="color:#f92672">=</span> rds_data<span style="color:#f92672">.</span>execute_statement(
+        resourceArn <span style="color:#f92672">=</span> cluster_arn,
+        secretArn <span style="color:#f92672">=</span> secret_arn,
+        database <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;mydb&#39;</span>,
+        sql <span style="color:#f92672">=</span> sql,
+        parameters <span style="color:#f92672">=</span> para1)
+
+    <span style="color:#66d9ef">return</span> response
+</code></pre></div><p><img src="images/17.png" alt="image17"></p>
+<ol start="5">
+<li>Lambda가 Aurora를 접속 할 수 있도록, 실행 권한을 부여합니다.</li>
+<li>우측 상단에 <strong>권한</strong> 탭을 선택 후, 역할 이름 아래 있는 링크를 클릭 합니다.
+<img src="images/18.png" alt="image18"></li>
+<li>IAM 콘솔로 리다이렉트 됩니다. 
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  정책 연결
+  
+</a>
+ 버튼을 누릅니다.
+<img src="images/19.png" alt="image19"></li>
+<li><strong>AmazonRDSDataFullAccess</strong> 정책을 검색한 후 
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  정책 연결
+  
+</a>
+ 버튼을 누릅니다.
+<img src="images/20.png" alt="image20"></li>
+</ol>
+<hr>
+<!-- raw HTML omitted -->
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/ServicesAnalytics/lab1/" title="실습1. Kinesis로 S3에 데이터 수집"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/ServicesAnalytics/lab3/" title="실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/ServicesAnalytics/js/clipboard.min.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/perfect-scrollbar.min.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/perfect-scrollbar.jquery.min.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/jquery.sticky.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/featherlight.min.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/highlight.pack.js?1598820468"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/ServicesAnalytics/js/modernizr.custom-3.6.0.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/learn.js?1598820468"></script>
+    <script src="/ServicesAnalytics/js/hugo-learn.js?1598820468"></script>
+
+    <link href="/ServicesAnalytics/mermaid/mermaid.css?1598820468" rel="stylesheet" />
+    <script src="/ServicesAnalytics/mermaid/mermaid.js?1598820468"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+  </body>
+</html>
