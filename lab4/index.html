@@ -7,25 +7,25 @@
     <meta name="description" content="Services Analytics Workshop">
 <meta name="author" content="Sejun Kim">
 
-    <link rel="icon" href="/ServicesAnalytics/images/favicon.png" type="image/png">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
 
     <title>실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift :: Services Analytics Workshop</title>
 
     
-    <link href="/ServicesAnalytics/css/nucleus.css?1598820468" rel="stylesheet">
-    <link href="/ServicesAnalytics/css/fontawesome-all.min.css?1598820468" rel="stylesheet">
-    <link href="/ServicesAnalytics/css/hybrid.css?1598820468" rel="stylesheet">
-    <link href="/ServicesAnalytics/css/featherlight.min.css?1598820468" rel="stylesheet">
-    <link href="/ServicesAnalytics/css/perfect-scrollbar.min.css?1598820468" rel="stylesheet">
-    <link href="/ServicesAnalytics/css/auto-complete.css?1598820468" rel="stylesheet">
-    <link href="/ServicesAnalytics/css/atom-one-dark-reasonable.css?1598820468" rel="stylesheet">
-    <link href="/ServicesAnalytics/css/theme.css?1598820468" rel="stylesheet">
-    <link href="/ServicesAnalytics/css/hugo-theme.css?1598820468" rel="stylesheet">
+    <link href="/css/nucleus.css?1598820837" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1598820837" rel="stylesheet">
+    <link href="/css/hybrid.css?1598820837" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1598820837" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1598820837" rel="stylesheet">
+    <link href="/css/auto-complete.css?1598820837" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1598820837" rel="stylesheet">
+    <link href="/css/theme.css?1598820837" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1598820837" rel="stylesheet">
     
-      <link href="/ServicesAnalytics/css/theme-aws.css?1598820468" rel="stylesheet">
+      <link href="/css/theme-aws.css?1598820837" rel="stylesheet">
     
 
-    <script src="/ServicesAnalytics/js/jquery-3.3.1.min.js?1598820468"></script>
+    <script src="/js/jquery-3.3.1.min.js?1598820837"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -35,15 +35,15 @@
     </style>
     
   </head>
-  <body class="" data-url="/ServicesAnalytics/lab4/">
+  <body class="" data-url="/lab4/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
 
   <div id="header-wrapper">
     <div id="header">
-      <a id="logo" href="/ServicesAnalytics">
-	<img src="/ServicesAnalytics/images/logo.png" height="70px"/>
+      <a id="logo" href="/">
+	<img src="/images/logo.png" height="70px"/>
 </a>
 
     </div>
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/ServicesAnalytics/js/lunr.min.js?1598820468"></script>
-<script type="text/javascript" src="/ServicesAnalytics/js/auto-complete.js?1598820468"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1598820837"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1598820837"></script>
 <script type="text/javascript">
     
-        var baseurl = "\/ServicesAnalytics\/";
+        var baseurl = "https:\/\/master.d3azo4pzikh78w.amplifyapp.com\/";
     
 </script>
-<script type="text/javascript" src="/ServicesAnalytics/js/search.js?1598820468"></script>
+<script type="text/javascript" src="/js/search.js?1598820837"></script>
 
     
   </div>
@@ -77,12 +77,12 @@
  
   
     
-    <li data-nav-id="/ServicesAnalytics/intro/" title="소개" class="dd-item 
+    <li data-nav-id="/intro/" title="소개" class="dd-item 
         
         
         
         ">
-      <a href="/ServicesAnalytics/intro/">
+      <a href="/intro/">
           <b>1. </b>소개
           
             <i class="fas fa-check read-icon"></i>
@@ -101,12 +101,12 @@
  
   
     
-    <li data-nav-id="/ServicesAnalytics/lab0/" title="실습0. 사전 준비" class="dd-item 
+    <li data-nav-id="/lab0/" title="실습0. 사전 준비" class="dd-item 
         
         
         
         ">
-      <a href="/ServicesAnalytics/lab0/">
+      <a href="/lab0/">
           <b>2. </b>실습0. 사전 준비
           
             <i class="fas fa-check read-icon"></i>
@@ -125,12 +125,12 @@
  
   
     
-    <li data-nav-id="/ServicesAnalytics/lab1/" title="실습1. Kinesis로 S3에 데이터 수집" class="dd-item 
+    <li data-nav-id="/lab1/" title="실습1. Kinesis로 S3에 데이터 수집" class="dd-item 
         
         
         
         ">
-      <a href="/ServicesAnalytics/lab1/">
+      <a href="/lab1/">
           <b>3. </b>실습1. Kinesis로 S3에 데이터 수집
           
             <i class="fas fa-check read-icon"></i>
@@ -149,12 +149,12 @@
  
   
     
-    <li data-nav-id="/ServicesAnalytics/lab2/" title="실습2. API Gateway, Lambda로 Aurora 데이터 가져오기" class="dd-item 
+    <li data-nav-id="/lab2/" title="실습2. API Gateway, Lambda로 Aurora 데이터 가져오기" class="dd-item 
         
         
         
         ">
-      <a href="/ServicesAnalytics/lab2/">
+      <a href="/lab2/">
           <b>4. </b>실습2. API Gateway, Lambda로 Aurora 데이터 가져오기
           
             <i class="fas fa-check read-icon"></i>
@@ -173,12 +173,12 @@
  
   
     
-    <li data-nav-id="/ServicesAnalytics/lab3/" title="실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석" class="dd-item 
+    <li data-nav-id="/lab3/" title="실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석" class="dd-item 
         
         
         
         ">
-      <a href="/ServicesAnalytics/lab3/">
+      <a href="/lab3/">
           <b>5. </b>실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석
           
             <i class="fas fa-check read-icon"></i>
@@ -197,12 +197,12 @@
  
   
     
-    <li data-nav-id="/ServicesAnalytics/lab4/" title="실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift" class="dd-item 
+    <li data-nav-id="/lab4/" title="실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift" class="dd-item 
         parent
         active
         
         ">
-      <a href="/ServicesAnalytics/lab4/">
+      <a href="/lab4/">
           <b>5. </b>실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift
           
             <i class="fas fa-check read-icon"></i>
@@ -225,7 +225,7 @@
         <ul>
           
               <li> 
-                  <a class="padding" href="/ServicesAnalytics/credits/"><i class='fas fa-fw fa-bullhorn'></i> 크레딧</a>
+                  <a class="padding" href="https://master.d3azo4pzikh78w.amplifyapp.com/credits/"><i class='fas fa-fw fa-bullhorn'></i> 크레딧</a>
               </li>
           
         </ul>
@@ -282,7 +282,7 @@
             
           
           
-            <a href='/ServicesAnalytics/'>홈</a> > 실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift
+            <a href='/'>홈</a> > 실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift
           
          
           
@@ -721,10 +721,10 @@ WHERE tablename = 'sales_partitioned'
 	 
 	 
 		
-			<a class="nav nav-prev" href="/ServicesAnalytics/lab3/" title="실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/lab3/" title="실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/ServicesAnalytics/intro/" title="소개" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/intro/" title="소개" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -734,19 +734,19 @@ WHERE tablename = 'sales_partitioned'
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/ServicesAnalytics/js/clipboard.min.js?1598820468"></script>
-    <script src="/ServicesAnalytics/js/perfect-scrollbar.min.js?1598820468"></script>
-    <script src="/ServicesAnalytics/js/perfect-scrollbar.jquery.min.js?1598820468"></script>
-    <script src="/ServicesAnalytics/js/jquery.sticky.js?1598820468"></script>
-    <script src="/ServicesAnalytics/js/featherlight.min.js?1598820468"></script>
-    <script src="/ServicesAnalytics/js/highlight.pack.js?1598820468"></script>
+    <script src="/js/clipboard.min.js?1598820837"></script>
+    <script src="/js/perfect-scrollbar.min.js?1598820837"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1598820837"></script>
+    <script src="/js/jquery.sticky.js?1598820837"></script>
+    <script src="/js/featherlight.min.js?1598820837"></script>
+    <script src="/js/highlight.pack.js?1598820837"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/ServicesAnalytics/js/modernizr.custom-3.6.0.js?1598820468"></script>
-    <script src="/ServicesAnalytics/js/learn.js?1598820468"></script>
-    <script src="/ServicesAnalytics/js/hugo-learn.js?1598820468"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1598820837"></script>
+    <script src="/js/learn.js?1598820837"></script>
+    <script src="/js/hugo-learn.js?1598820837"></script>
 
-    <link href="/ServicesAnalytics/mermaid/mermaid.css?1598820468" rel="stylesheet" />
-    <script src="/ServicesAnalytics/mermaid/mermaid.js?1598820468"></script>
+    <link href="/mermaid/mermaid.css?1598820837" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1598820837"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
