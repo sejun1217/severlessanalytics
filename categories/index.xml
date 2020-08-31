@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Services Analytics Workshop</title>
-    <link>/serverless/categories/</link>
+    <link>https://master.d3azo4pzikh78w.amplifyapp.com/categories/</link>
     <description>Recent content in Categories on Services Analytics Workshop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     
-	<atom:link href="/serverless/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://master.d3azo4pzikh78w.amplifyapp.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

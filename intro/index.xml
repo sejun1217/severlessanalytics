@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>소개 on Services Analytics Workshop</title>
-    <link>/serverless/intro/</link>
+    <link>https://master.d3azo4pzikh78w.amplifyapp.com/intro/</link>
     <description>Recent content in 소개 on Services Analytics Workshop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     
-	<atom:link href="/serverless/intro/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://master.d3azo4pzikh78w.amplifyapp.com/intro/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
