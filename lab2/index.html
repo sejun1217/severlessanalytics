@@ -12,20 +12,20 @@
     <title>실습2. API Gateway, Lambda로 Aurora 데이터 가져오기 :: Services Analytics Workshop</title>
 
     
-    <link href="/css/nucleus.css?1598820837" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1598820837" rel="stylesheet">
-    <link href="/css/hybrid.css?1598820837" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1598820837" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1598820837" rel="stylesheet">
-    <link href="/css/auto-complete.css?1598820837" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1598820837" rel="stylesheet">
-    <link href="/css/theme.css?1598820837" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1598820837" rel="stylesheet">
+    <link href="/css/nucleus.css?1598840803" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1598840803" rel="stylesheet">
+    <link href="/css/hybrid.css?1598840803" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1598840803" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1598840803" rel="stylesheet">
+    <link href="/css/auto-complete.css?1598840803" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1598840803" rel="stylesheet">
+    <link href="/css/theme.css?1598840803" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1598840803" rel="stylesheet">
     
-      <link href="/css/theme-aws.css?1598820837" rel="stylesheet">
+      <link href="/css/theme-aws.css?1598840803" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1598820837"></script>
+    <script src="/js/jquery-3.3.1.min.js?1598840803"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1598820837"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1598820837"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1598840803"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1598840803"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/master.d3azo4pzikh78w.amplifyapp.com\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1598820837"></script>
+<script type="text/javascript" src="/js/search.js?1598840803"></script>
 
     
   </div>
@@ -125,13 +125,13 @@
  
   
     
-    <li data-nav-id="/lab1/" title="실습1. Kinesis로 S3에 데이터 수집" class="dd-item 
+    <li data-nav-id="/lab1/" title="실습1. Glue, Athena, QuickSight로 수집한 S3의 데이터 분석" class="dd-item 
         
         
         
         ">
       <a href="/lab1/">
-          <b>3. </b>실습1. Kinesis로 S3에 데이터 수집
+          <b>3. </b>실습1. Glue, Athena, QuickSight로 수집한 S3의 데이터 분석
           
             <i class="fas fa-check read-icon"></i>
           
@@ -156,54 +156,6 @@
         ">
       <a href="/lab2/">
           <b>4. </b>실습2. API Gateway, Lambda로 Aurora 데이터 가져오기
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-          
-          
-
-
- 
-  
-    
-    <li data-nav-id="/lab3/" title="실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/lab3/">
-          <b>5. </b>실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-          
-          
-
-
- 
-  
-    
-    <li data-nav-id="/lab4/" title="실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/lab4/">
-          <b>5. </b>실습4. AWS 기반 데이터 웨어하우징 - Amazon Redshift
           
             <i class="fas fa-check read-icon"></i>
           
@@ -544,6 +496,76 @@ secret_arn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 <img src="images/20.png" alt="image20"></li>
 </ol>
 <hr>
+<h4 id="amazon-api-gateway---rest-api-생성">Amazon API Gateway - REST API 생성</h4>
+<p>REST API Request가 들어오면 이전에 생성한 Lambda 함수를 실행하는 API를 생성합니다</p>
+<ol>
+<li><a href="https://console.aws.amazon.com/apigateway/main/apis?region=us-east-1">API Gateway Console</a>에 접속합니다.</li>
+<li>REST API 생성을 위해 <strong>구축</strong> 버튼을 누른다.
+<img src="images/21.png" alt="image21"></li>
+<li><strong>새 API</strong> 선택 합니다. API 이름은 <strong>MyApi</strong> 로 입력합니다.
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  API 생성
+  
+</a>
+ 버튼을 누릅니다.
+<img src="images/22.png" alt="image22"></li>
+<li>
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  작업
+  
+</a>
+ 버튼을 누르고 메서드 생성 버튼을 클릭합니다.
+<img src="images/23.png" alt="image23"></li>
+<li><strong>POST</strong> 메서드를 선택하고 <strong>v</strong> 를 누릅니다.
+<img src="images/24.png" alt="image24"></li>
+<li>메서드에 포인트를 <strong>Lambda 함수</strong> 로 선택하고 Lambda 함수는 이전에 생성한 <strong>MyAurora</strong> 를 입력합니다.
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  저장
+  
+</a>
+ 버튼을 누릅니다.
+<img src="images/25.png" alt="image25"></li>
+<li>API의 Lambda 함수에 대한 권한 추가를 위해 
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  확인
+  
+</a>
+ 버튼을 누릅니다.
+<img src="images/26.png" alt="image26"></li>
+<li>
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  작업
+  
+</a>
+ 버튼을 누르고, <strong>API 배포</strong> 를 선택합니다.
+<img src="images/27.png" alt="image27"></li>
+<li>배포 스테이지는 <strong>새 스테이지</strong>를 선택하고 스테이지 이름을 <strong>PROD</strong>로 입력합니다. 
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  배포
+  
+</a>
+ 버튼을 누릅니다.
+<img src="images/28.png" alt="image28"></li>
+</ol>
+<hr>
 <!-- raw HTML omitted -->
 
 
@@ -648,41 +670,6 @@ secret_arn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
             
         
                     
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
         
@@ -692,10 +679,10 @@ secret_arn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 	 
 	 
 		
-			<a class="nav nav-prev" href="/lab1/" title="실습1. Kinesis로 S3에 데이터 수집"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/lab1/" title="실습1. Glue, Athena, QuickSight로 수집한 S3의 데이터 분석"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/lab3/" title="실습3. EMR을 이용한 Hadoop 클러스터 구성 및 데이터 분석" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/intro/" title="소개" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -705,19 +692,19 @@ secret_arn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1598820837"></script>
-    <script src="/js/perfect-scrollbar.min.js?1598820837"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1598820837"></script>
-    <script src="/js/jquery.sticky.js?1598820837"></script>
-    <script src="/js/featherlight.min.js?1598820837"></script>
-    <script src="/js/highlight.pack.js?1598820837"></script>
+    <script src="/js/clipboard.min.js?1598840803"></script>
+    <script src="/js/perfect-scrollbar.min.js?1598840803"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1598840803"></script>
+    <script src="/js/jquery.sticky.js?1598840803"></script>
+    <script src="/js/featherlight.min.js?1598840803"></script>
+    <script src="/js/highlight.pack.js?1598840803"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1598820837"></script>
-    <script src="/js/learn.js?1598820837"></script>
-    <script src="/js/hugo-learn.js?1598820837"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1598840803"></script>
+    <script src="/js/learn.js?1598840803"></script>
+    <script src="/js/hugo-learn.js?1598840803"></script>
 
-    <link href="/mermaid/mermaid.css?1598820837" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1598820837"></script>
+    <link href="/mermaid/mermaid.css?1598840803" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1598840803"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

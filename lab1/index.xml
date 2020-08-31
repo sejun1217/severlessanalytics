@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>실습1. Kinesis로 S3에 데이터 수집 on Services Analytics Workshop</title>
+    <title>실습1. Glue, Athena, QuickSight로 수집한 S3의 데이터 분석 on Services Analytics Workshop</title>
     <link>https://master.d3azo4pzikh78w.amplifyapp.com/lab1/</link>
-    <description>Recent content in 실습1. Kinesis로 S3에 데이터 수집 on Services Analytics Workshop</description>
+    <description>Recent content in 실습1. Glue, Athena, QuickSight로 수집한 S3의 데이터 분석 on Services Analytics Workshop</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     
