@@ -12,20 +12,20 @@
     <title>실습2. API Gateway, Lambda로 Aurora 데이터 가져오기 :: Services Analytics Workshop</title>
 
     
-    <link href="/css/nucleus.css?1598840803" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1598840803" rel="stylesheet">
-    <link href="/css/hybrid.css?1598840803" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1598840803" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1598840803" rel="stylesheet">
-    <link href="/css/auto-complete.css?1598840803" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1598840803" rel="stylesheet">
-    <link href="/css/theme.css?1598840803" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1598840803" rel="stylesheet">
+    <link href="/css/nucleus.css?1598844746" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1598844746" rel="stylesheet">
+    <link href="/css/hybrid.css?1598844746" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1598844746" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1598844746" rel="stylesheet">
+    <link href="/css/auto-complete.css?1598844746" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1598844746" rel="stylesheet">
+    <link href="/css/theme.css?1598844746" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1598844746" rel="stylesheet">
     
-      <link href="/css/theme-aws.css?1598840803" rel="stylesheet">
+      <link href="/css/theme-aws.css?1598844746" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1598840803"></script>
+    <script src="/js/jquery-3.3.1.min.js?1598844746"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1598840803"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1598840803"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1598844746"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1598844746"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/master.d3azo4pzikh78w.amplifyapp.com\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1598840803"></script>
+<script type="text/javascript" src="/js/search.js?1598844746"></script>
 
     
   </div>
@@ -280,7 +280,7 @@
 
 	<h4 id="실습-소개">실습 소개</h4>
 
-<div class="notices note" ><p>이번 실습 에서는 Aurora에 저장하고 API Gateway, Lambda를 이용해서 Aurora에 저장된 데이터를 가져오는 실습을 진행할 예정입니다.</p>
+<div class="notices note" ><p><em><strong>이번 실습 에서는 API Gateway, Lambda를 이용해서 Aurora에 저장된 데이터를 가져오는 실습을 진행할 예정입니다.</strong></em></p>
 </div>
 
 <hr>
@@ -469,12 +469,23 @@ secret_arn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
         parameters <span style="color:#f92672">=</span> para1)
 
     <span style="color:#66d9ef">return</span> response
-</code></pre></div><p><img src="images/17.png" alt="image17"></p>
-<ol start="5">
-<li>Lambda가 Aurora를 접속 할 수 있도록, 실행 권한을 부여합니다.</li>
-<li>우측 상단에 <strong>권한</strong> 탭을 선택 후, 역할 이름 아래 있는 링크를 클릭 합니다.
-<img src="images/18.png" alt="image18"></li>
-<li>IAM 콘솔로 리다이렉트 됩니다. 
+</code></pre></div><p><img src="images/17.png" alt="image17">
+5. 수행시간이 긴 Query 를 위해 Lambda 수행 제한시간을 1분으로 늘려 줍니다. 하단의 <strong>기본 설정</strong> 에 <strong>편집</strong>을 선택 합니다
+<img src="images/17-1.png" alt="image17-1">
+6. 제한 시간을 <strong>1</strong> 분으로 변경하고, 
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  저장
+  
+</a>
+ 버튼을 누릅니다.
+<img src="images/17-2.png" alt="image17-2">
+7. Lambda가 Aurora를 접속 할 수 있도록, 실행 권한을 부여합니다.
+8. 우측 상단에 <strong>권한</strong> 탭을 선택 후, 역할 이름 아래 있는 링크를 클릭 합니다.
+<img src="images/18.png" alt="image18">
+9. IAM 콘솔로 리다이렉트 됩니다. 
 <a  href="#" target="_blank"  class="btn btn-default">
   
   
@@ -483,8 +494,8 @@ secret_arn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
   
 </a>
  버튼을 누릅니다.
-<img src="images/19.png" alt="image19"></li>
-<li><strong>AmazonRDSDataFullAccess</strong> 정책을 검색한 후 
+<img src="images/19.png" alt="image19">
+10. <strong>AmazonRDSDataFullAccess</strong> 정책을 검색한 후 
 <a  href="#" target="_blank"  class="btn btn-default">
   
   
@@ -493,14 +504,21 @@ secret_arn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
   
 </a>
  버튼을 누릅니다.
-<img src="images/20.png" alt="image20"></li>
-</ol>
+<img src="images/20.png" alt="image20"></p>
 <hr>
 <h4 id="amazon-api-gateway---rest-api-생성">Amazon API Gateway - REST API 생성</h4>
 <p>REST API Request가 들어오면 이전에 생성한 Lambda 함수를 실행하는 API를 생성합니다</p>
 <ol>
 <li><a href="https://console.aws.amazon.com/apigateway/main/apis?region=us-east-1">API Gateway Console</a>에 접속합니다.</li>
-<li>REST API 생성을 위해 <strong>구축</strong> 버튼을 누른다.
+<li>REST API 생성을 위해 
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  구축
+  
+</a>
+ 버튼을 누릅니다.
 <img src="images/21.png" alt="image21"></li>
 <li><strong>새 API</strong> 선택 합니다. API 이름은 <strong>MyApi</strong> 로 입력합니다.
 <a  href="#" target="_blank"  class="btn btn-default">
@@ -520,7 +538,7 @@ secret_arn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
   작업
   
 </a>
- 버튼을 누르고 메서드 생성 버튼을 클릭합니다.
+ 버튼을 누르고 <strong>메서드 생성</strong> 을 선택합니다.
 <img src="images/23.png" alt="image23"></li>
 <li><strong>POST</strong> 메서드를 선택하고 <strong>v</strong> 를 누릅니다.
 <img src="images/24.png" alt="image24"></li>
@@ -566,6 +584,60 @@ secret_arn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
 <img src="images/28.png" alt="image28"></li>
 </ol>
 <hr>
+<h4 id="rest-api-테스트">REST API 테스트</h4>
+<ol>
+<li><a href="https://console.aws.amazon.com/apigateway/main/apis?region=us-east-1">API Gateway Console</a>에 접속합니다.</li>
+<li>생성한 API <strong>MyApi</strong> 를 선택합니다.
+<img src="images/29.png" alt="image29"></li>
+<li>생성한 메소드 <strong>POST</strong> 를 선택합니다. 그리고 <strong>테스트</strong> 를 선택합니다.
+<img src="images/30.png" alt="image30"></li>
+<li>요청 본문에 아래와 같이 입력하고 
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  태스트
+  
+</a>
+ 버튼을 누릅니다.
+<ul>
+<li>테이블에 전체 데이터를 가지고 오는 요청</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;operation&#34;</span>: <span style="color:#e6db74">&#34;get&#34;</span>
+}
+</code></pre></div><p><img src="images/31.png" alt="image31">
+<img src="images/32.png" alt="image32"></p>
+<ol start="4">
+<li>요청 본문에 아래와 같이 입력하고 
+<a  href="#" target="_blank"  class="btn btn-default">
+  
+  
+  
+  태스트
+  
+</a>
+ 버튼을 누릅니다.
+<ul>
+<li>role 이 admin 인 유저 데이터를 가지고 오는 요청</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;operation&#34;</span>: <span style="color:#e6db74">&#34;para&#34;</span>,
+    <span style="color:#f92672">&#34;payload&#34;</span>:
+    {
+      <span style="color:#f92672">&#34;role&#34;</span>: <span style="color:#e6db74">&#34;admin&#34;</span>
+    }
+}
+</code></pre></div><p><img src="images/33.png" alt="image33">
+<img src="images/34.png" alt="image34"></p>
+
+<div class="notices note" ><p><em><strong>실습1, 2가 모두 완료 되었습니다, 수고하셨습니다.</strong></em></p>
+</div>
+
 <!-- raw HTML omitted -->
 
 
@@ -692,19 +764,19 @@ secret_arn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1598840803"></script>
-    <script src="/js/perfect-scrollbar.min.js?1598840803"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1598840803"></script>
-    <script src="/js/jquery.sticky.js?1598840803"></script>
-    <script src="/js/featherlight.min.js?1598840803"></script>
-    <script src="/js/highlight.pack.js?1598840803"></script>
+    <script src="/js/clipboard.min.js?1598844746"></script>
+    <script src="/js/perfect-scrollbar.min.js?1598844746"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1598844746"></script>
+    <script src="/js/jquery.sticky.js?1598844746"></script>
+    <script src="/js/featherlight.min.js?1598844746"></script>
+    <script src="/js/highlight.pack.js?1598844746"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1598840803"></script>
-    <script src="/js/learn.js?1598840803"></script>
-    <script src="/js/hugo-learn.js?1598840803"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1598844746"></script>
+    <script src="/js/learn.js?1598844746"></script>
+    <script src="/js/hugo-learn.js?1598844746"></script>
 
-    <link href="/mermaid/mermaid.css?1598840803" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1598840803"></script>
+    <link href="/mermaid/mermaid.css?1598844746" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1598844746"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
