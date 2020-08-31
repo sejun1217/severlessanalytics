@@ -12,20 +12,20 @@
     <title>실습1. Glue, Athena, QuickSight로 수집한 S3의 데이터 분석 :: Services Analytics Workshop</title>
 
     
-    <link href="/css/nucleus.css?1598893542" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1598893542" rel="stylesheet">
-    <link href="/css/hybrid.css?1598893542" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1598893542" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1598893542" rel="stylesheet">
-    <link href="/css/auto-complete.css?1598893542" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1598893542" rel="stylesheet">
-    <link href="/css/theme.css?1598893542" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1598893542" rel="stylesheet">
+    <link href="/css/nucleus.css?1598917755" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1598917755" rel="stylesheet">
+    <link href="/css/hybrid.css?1598917755" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1598917755" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1598917755" rel="stylesheet">
+    <link href="/css/auto-complete.css?1598917755" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1598917755" rel="stylesheet">
+    <link href="/css/theme.css?1598917755" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1598917755" rel="stylesheet">
     
-      <link href="/css/theme-aws.css?1598893542" rel="stylesheet">
+      <link href="/css/theme-aws.css?1598917755" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1598893542"></script>
+    <script src="/js/jquery-3.3.1.min.js?1598917755"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1598893542"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1598893542"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1598917755"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1598917755"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/master.d3azo4pzikh78w.amplifyapp.com\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1598893542"></script>
+<script type="text/javascript" src="/js/search.js?1598917755"></script>
 
     
   </div>
@@ -505,12 +505,7 @@
 <li>크롤러는 S3에 저장된 파일을 분석하고 테이블을 생성합니다. 크롤링이 끝난 후 테이블 1개 (테이블명 : <strong>source</strong>)가 생성되었음을 확인합니다.
 <img src="images/05.png" alt="image05"></li>
 <li><strong>데이터베이스</strong> &gt; <strong>테이블</strong> 에서 방금 생성된 <strong>source</strong> 테이블을 클릭하여 테이블 구조를 확인합니다.</li>
-<li>Kinesis Firehose가 <strong>s3://analytics-workshop-[개인식별자]/source</strong> 에 저장한 JSON 파일 포맷 스트림 데이터를 Parquet 파일 포맷으로 변경하고, 일부 컬럼의 데이터 타입을 변경한 후 <strong>s3://analytics-workshop-[개인식별자]/parquet</strong> 폴더에 파일을 저장하는 Glue ETL 작업을 생성하겠습니다.
-<ul>
-<li>웹 브라우저에 접속하여 <a href="https://bigdataimd-source-sejun.s3.amazonaws.com/source.tgz">source.tgz</a> 파일을 다운로드 받습니다</li>
-<li><strong>s3://analytics-workshop-[개인식별자]/source</strong> 에 source.taz 파일을 업로드합니다</li>
-</ul>
-</li>
+<li>Kinesis Firehose가 <strong>s3://analytics-workshop-[개인식별자]/source</strong> 에 저장한 JSON 파일 포맷 스트림 데이터를 Parquet 파일 포맷으로 변경하고, 일부 컬럼의 데이터 타입을 변경한 후 <strong>s3://analytics-workshop-[개인식별자]/parquet</strong> 폴더에 파일을 저장하는 Glue ETL 작업을 생성하겠습니다.</li>
 <li>우선 ETL후 결과 파일이 저장될 폴더를 생성합니다. S3 콘솔로 로그인한 후 <strong>analytics-workshop-[개인식별자]</strong> 버킷를 선택하고 <strong>parquet</strong> 폴더를 생성합니다.
 <img src="images/06.png" alt="image06"></li>
 <li>Glue 콘솔(<a href="https://console.aws.amazon.com/glue">https://console.aws.amazon.com/glue</a>) 에서 <strong>ETL</strong> &gt; <strong>작업</strong>을 선택한 후 
@@ -1012,19 +1007,19 @@ ORDER BY region;
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1598893542"></script>
-    <script src="/js/perfect-scrollbar.min.js?1598893542"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1598893542"></script>
-    <script src="/js/jquery.sticky.js?1598893542"></script>
-    <script src="/js/featherlight.min.js?1598893542"></script>
-    <script src="/js/highlight.pack.js?1598893542"></script>
+    <script src="/js/clipboard.min.js?1598917755"></script>
+    <script src="/js/perfect-scrollbar.min.js?1598917755"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1598917755"></script>
+    <script src="/js/jquery.sticky.js?1598917755"></script>
+    <script src="/js/featherlight.min.js?1598917755"></script>
+    <script src="/js/highlight.pack.js?1598917755"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1598893542"></script>
-    <script src="/js/learn.js?1598893542"></script>
-    <script src="/js/hugo-learn.js?1598893542"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1598917755"></script>
+    <script src="/js/learn.js?1598917755"></script>
+    <script src="/js/hugo-learn.js?1598917755"></script>
 
-    <link href="/mermaid/mermaid.css?1598893542" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1598893542"></script>
+    <link href="/mermaid/mermaid.css?1598917755" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1598917755"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
