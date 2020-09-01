@@ -12,20 +12,20 @@
     <title>실습1. Glue, Athena, QuickSight로 수집한 S3의 데이터 분석 :: Services Analytics Workshop</title>
 
     
-    <link href="/css/nucleus.css?1598917755" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1598917755" rel="stylesheet">
-    <link href="/css/hybrid.css?1598917755" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1598917755" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1598917755" rel="stylesheet">
-    <link href="/css/auto-complete.css?1598917755" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1598917755" rel="stylesheet">
-    <link href="/css/theme.css?1598917755" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1598917755" rel="stylesheet">
+    <link href="/css/nucleus.css?1598923995" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1598923995" rel="stylesheet">
+    <link href="/css/hybrid.css?1598923995" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1598923995" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1598923995" rel="stylesheet">
+    <link href="/css/auto-complete.css?1598923995" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1598923995" rel="stylesheet">
+    <link href="/css/theme.css?1598923995" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1598923995" rel="stylesheet">
     
-      <link href="/css/theme-aws.css?1598917755" rel="stylesheet">
+      <link href="/css/theme-aws.css?1598923995" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1598917755"></script>
+    <script src="/js/jquery-3.3.1.min.js?1598923995"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1598917755"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1598917755"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1598923995"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1598923995"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/master.d3azo4pzikh78w.amplifyapp.com\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1598917755"></script>
+<script type="text/javascript" src="/js/search.js?1598923995"></script>
 
     
   </div>
@@ -287,6 +287,14 @@
 <h4 id="실습-아키텍처">실습 아키텍처</h4>
 <p><img src="images/01.png" alt="image01"></p>
 <hr>
+<h4 id="사전-작업">사전 작업</h4>
+<ol>
+<li>미리 생성한 Source 데이터를 S3에 업로드 하기 위해 Lab0에서 접속한 <a href="https://console.aws.amazon.com/systems-manager/session-manager?region=us-east-1">Session Manager</a>에 접속합니다.</li>
+<li>아래 명령어를 수행하여 Source.tgz 파일을 다운로드 받고, 압축을 해제한 다음에, Lab0에서 만든 S3에 데이터를 업로드 합니다.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">ws s3 cp s3://bigdataimd-source-sejun/source.tgz .
+
+</code></pre></div><hr>
 <h4 id="aws-glue">AWS Glue</h4>
 <p>AWS Glue는 완전관리형 ETL(Extract, Transform, Load) 엔진입니다. 이번 실습에서는 실시간 또는 batch 방식으로 수집되어 S3에 저장한 데이터를 Glue, Athena, QuickSight 를 이용해 분석해봅니다. Hive 호환 External Table을 만들고 Athena, QuickSight로 데이터를 분석하고 시각화 합니다. 이 실습에서는 간단히 다음 커맨드로 batch 방식 수집을 대신하겠습니다..<!-- raw HTML omitted --></p>
 <ol>
@@ -1007,19 +1015,19 @@ ORDER BY region;
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1598917755"></script>
-    <script src="/js/perfect-scrollbar.min.js?1598917755"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1598917755"></script>
-    <script src="/js/jquery.sticky.js?1598917755"></script>
-    <script src="/js/featherlight.min.js?1598917755"></script>
-    <script src="/js/highlight.pack.js?1598917755"></script>
+    <script src="/js/clipboard.min.js?1598923995"></script>
+    <script src="/js/perfect-scrollbar.min.js?1598923995"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1598923995"></script>
+    <script src="/js/jquery.sticky.js?1598923995"></script>
+    <script src="/js/featherlight.min.js?1598923995"></script>
+    <script src="/js/highlight.pack.js?1598923995"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1598917755"></script>
-    <script src="/js/learn.js?1598917755"></script>
-    <script src="/js/hugo-learn.js?1598917755"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1598923995"></script>
+    <script src="/js/learn.js?1598923995"></script>
+    <script src="/js/hugo-learn.js?1598923995"></script>
 
-    <link href="/mermaid/mermaid.css?1598917755" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1598917755"></script>
+    <link href="/mermaid/mermaid.css?1598923995" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1598923995"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
