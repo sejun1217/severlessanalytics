@@ -12,20 +12,20 @@
     <title>실습1. Glue, Athena, QuickSight로 수집한 S3의 데이터 분석 :: Services Analytics Workshop</title>
 
     
-    <link href="/css/nucleus.css?1599024622" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1599024622" rel="stylesheet">
-    <link href="/css/hybrid.css?1599024622" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1599024622" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1599024622" rel="stylesheet">
-    <link href="/css/auto-complete.css?1599024622" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1599024622" rel="stylesheet">
-    <link href="/css/theme.css?1599024622" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1599024622" rel="stylesheet">
+    <link href="/css/nucleus.css?1640488957" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1640488957" rel="stylesheet">
+    <link href="/css/hybrid.css?1640488957" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1640488957" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1640488957" rel="stylesheet">
+    <link href="/css/auto-complete.css?1640488957" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1640488957" rel="stylesheet">
+    <link href="/css/theme.css?1640488957" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1640488957" rel="stylesheet">
     
-      <link href="/css/theme-aws.css?1599024622" rel="stylesheet">
+      <link href="/css/theme-aws.css?1640488957" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1599024622"></script>
+    <script src="/js/jquery-3.3.1.min.js?1640488957"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1599024622"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1599024622"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1640488957"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1640488957"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/master.d3azo4pzikh78w.amplifyapp.com\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1599024622"></script>
+<script type="text/javascript" src="/js/search.js?1640488957"></script>
 
     
   </div>
@@ -293,7 +293,7 @@
 <li>아래 명령어를 수행하여 Source.tgz 파일을 다운로드 받고, 압축을 해제한 다음에, Lab0에서 만든 S3에 데이터를 업로드 합니다.</li>
 </ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Shell" data-lang="Shell">cd /home/ssm-user
-aws s3 cp s3://bigdataimd-source-sejun/source.tgz .
+wget http://doc8se776ubdv.cloudfront.net/source.tgz
 tar xvfz source.tgz
 aws s3 cp source s3://analytics-workshop-<span style="color:#f92672">[</span>개인식별자<span style="color:#f92672">]</span>/source --recursive
 </code></pre></div><hr>
@@ -1021,19 +1021,19 @@ ORDER BY region;
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1599024622"></script>
-    <script src="/js/perfect-scrollbar.min.js?1599024622"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1599024622"></script>
-    <script src="/js/jquery.sticky.js?1599024622"></script>
-    <script src="/js/featherlight.min.js?1599024622"></script>
-    <script src="/js/highlight.pack.js?1599024622"></script>
+    <script src="/js/clipboard.min.js?1640488957"></script>
+    <script src="/js/perfect-scrollbar.min.js?1640488957"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1640488957"></script>
+    <script src="/js/jquery.sticky.js?1640488957"></script>
+    <script src="/js/featherlight.min.js?1640488957"></script>
+    <script src="/js/highlight.pack.js?1640488957"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1599024622"></script>
-    <script src="/js/learn.js?1599024622"></script>
-    <script src="/js/hugo-learn.js?1599024622"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1640488957"></script>
+    <script src="/js/learn.js?1640488957"></script>
+    <script src="/js/hugo-learn.js?1640488957"></script>
 
-    <link href="/mermaid/mermaid.css?1599024622" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1599024622"></script>
+    <link href="/mermaid/mermaid.css?1640488957" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1640488957"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
